@@ -5,7 +5,6 @@ description = "Shiny Bugsnag integration for Starlette framework"
 authors = ["Vlad Dmitrievich <me@2tunnels.com>"]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/2tunnels/starlette-x-bugsnag"
 repository = "https://github.com/2tunnels/starlette-x-bugsnag"
 keywords = ["starlette", "bugsnag", "asgi"]
 classifiers = [
