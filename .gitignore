@@ -3,6 +3,7 @@
 .mypy_cache/
 .junit/
 __pycache__/
+dist/
 
 # Files
 .coverage
