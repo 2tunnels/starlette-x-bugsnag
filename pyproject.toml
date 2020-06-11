@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "starlette-x-bugsnag"
-version = "0.1.0"
+version = "0.1.1"
 description = "Shiny Bugsnag integration for Starlette framework"
 authors = ["Vlad Dmitrievich <me@2tunnels.com>"]
 license = "MIT"
