@@ -22,3 +22,6 @@ lint-safety:
 	safety check --full-report
 
 lint: lint-isort lint-black lint-mypy lint-safety
+
+patch:
+	bump2version patch
