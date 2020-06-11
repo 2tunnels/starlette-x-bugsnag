@@ -18,9 +18,9 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.6"
-bugsnag = "^3.6.1"
-importlib-metadata = "^1.6.1"
-starlette = "^0.13.4"
+bugsnag = "^3.6.0"
+importlib-metadata = "^1.6.0"
+starlette = "^0.13.0"
 
 [tool.poetry.dev-dependencies]
 isort = "^4.3.21"
