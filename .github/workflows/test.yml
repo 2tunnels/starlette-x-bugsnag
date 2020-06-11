@@ -1,0 +1,63 @@
+name: test
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install dependencies
+        run: |
+          python -m pip install -U pip setuptools poetry
+          poetry config virtualenvs.create false
+          poetry install
+      - name: Lint with isort
+        run: make lint-isort
+      - name: Lint with black
+        run: make lint-black
+      - name: Lint with mypy
+        run: make lint-mypy
+      - name: Lint with safety
+        run: make lint-safety
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version:
+          - 3.6
+          - 3.7
+          - 3.8
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install -U pip setuptools poetry
+          poetry config virtualenvs.create false
+          poetry install
+      - name: Test with pytest
+        run: |
+          pytest -vv --cov=starlette_x_bugsnag --cov-report=term-missing --junitxml=.junit/test-results-${{ matrix.python-version }}.xml
+      - name: Upload pytest test results
+        uses: actions/upload-artifact@v1
+        with:
+          name: test-results-${{ matrix.python-version }}
+          path: .junit/test-results-${{ matrix.python-version }}.xml
+        # Use always() to always run this step to publish test results when there are test failures
+        if: ${{ always() }}

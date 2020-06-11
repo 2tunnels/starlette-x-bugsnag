@@ -1,5 +1,5 @@
 test:
-	pytest -vv
+	pytest -vv --cov=starlette_x_bugsnag --cov-report=term-missing --junitxml=.junit/test-results.xml
 
 isort:
 	isort --recursive .

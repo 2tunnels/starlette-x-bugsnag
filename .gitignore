@@ -1,3 +1,8 @@
+# Dirs
 .idea/
 .mypy_cache/
+.junit/
 __pycache__/
+
+# Files
+.coverage

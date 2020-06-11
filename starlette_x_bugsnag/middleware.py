@@ -1,6 +1,6 @@
 try:
     from importlib import metadata
-except ImportError:
+except ImportError:  # pragma: no cover
     import importlib_metadata as metadata  # type:ignore
 
 from typing import Any
@@ -54,11 +54,8 @@ class BugsnagMiddleware(BaseHTTPMiddleware):
         if not tb:
             return {}
 
-        while True:
-            if tb.tb_next is not None:
-                tb = tb.tb_next
-            else:
-                break
+        while tb.tb_next is not None:
+            tb = tb.tb_next
 
         return tb.tb_frame.f_locals
 
