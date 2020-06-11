@@ -3,6 +3,8 @@
 Shiny [Bugsnag](https://www.bugsnag.com/) integration for [Starlette](https://www.starlette.io/) framework ✨
 
 ![test](https://github.com/2tunnels/starlette-x-bugsnag/workflows/test/badge.svg?branch=master)
+![codecov](https://img.shields.io/codecov/c/github/2tunnels/starlette-x-bugsnag/master)
+![dependencies](https://img.shields.io/librariesio/release/pypi/starlette-x-bugsnag)
 ![version](https://img.shields.io/pypi/v/starlette-x-bugsnag.svg)
 ![pyversions](https://img.shields.io/pypi/pyversions/starlette-x-bugsnag.svg)
 ![black](https://img.shields.io/badge/code%20style-black-000000.svg)
