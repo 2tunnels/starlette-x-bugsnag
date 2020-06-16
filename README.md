@@ -58,6 +58,7 @@ application = Starlette(
             api_key="secret",
             app_version="1.2.3",
             release_stage="production",
+            project_root=None,  # Save traceback not only from the current directory
         ),
     ],
 )
