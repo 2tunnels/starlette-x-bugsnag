@@ -2,7 +2,7 @@ try:
     from importlib import metadata
 except ImportError:  # pragma: no cover
     import importlib_metadata as metadata  # type:ignore
-
+import sys
 from typing import Any
 
 from bugsnag.client import Client
@@ -20,6 +20,9 @@ class BugsnagMiddleware(BaseHTTPMiddleware):
         super().__init__(app, dispatch)
 
         self._client = Client(api_key=api_key, **kwargs)
+        self._client.configuration.configure(
+            traceback_exclude_modules=[sys.modules[__name__]]
+        )
         self._configure_packages_tab()
 
     async def dispatch(
