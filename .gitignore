@@ -1,9 +1,9 @@
 # Dirs
 .idea/
 .mypy_cache/
-.junit/
 __pycache__/
 dist/
 
 # Files
 .coverage
+coverage.xml

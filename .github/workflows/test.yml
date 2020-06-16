@@ -52,8 +52,7 @@ jobs:
           poetry config virtualenvs.create false
           poetry install
       - name: Test with pytest
-        run: |
-          pytest -vv --cov=starlette_x_bugsnag --cov-report=term-missing --cov-report=xml --junitxml=.junit/test-results-${{ matrix.python-version }}.xml
+        run: make test
       - uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
