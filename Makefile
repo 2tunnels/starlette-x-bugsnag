@@ -25,6 +25,7 @@ lint: lint-isort lint-black lint-mypy lint-safety
 
 patch:
 	bump2version patch
+	github push --follow-tags
 
 publish:
 	poetry publish --build
