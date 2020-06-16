@@ -5,8 +5,8 @@ from starlette.testclient import TestClient
 
 
 def test_without_exception(
-    bugsnag_client_class: MagicMock,
-    bugsnag_client_instance: MagicMock,
+    bugsnag_delivery: MagicMock,
+    bugsnag_client_constructor: MagicMock,
     test_client: TestClient,
 ) -> None:
     response = test_client.get("/good")
@@ -14,13 +14,13 @@ def test_without_exception(
     assert response.status_code == HTTP_200_OK
     assert response.json() == {"message": "Hello world!"}
 
-    bugsnag_client_class.assert_called_once_with(api_key="secret")
-    bugsnag_client_instance.notify.assert_not_called()
+    bugsnag_client_constructor.assert_called_once_with(api_key="secret")
+    bugsnag_delivery.deliver.assert_not_called()
 
 
 def test_with_exception(
-    bugsnag_client_class: MagicMock,
-    bugsnag_client_instance: MagicMock,
+    bugsnag_delivery: MagicMock,
+    bugsnag_client_constructor: MagicMock,
     test_client: TestClient,
 ) -> None:
     response = test_client.get("/bad")
@@ -28,5 +28,5 @@ def test_with_exception(
     assert response.status_code == HTTP_500_INTERNAL_SERVER_ERROR
     assert response.text == "Internal Server Error"
 
-    bugsnag_client_class.assert_called_once_with(api_key="secret")
-    bugsnag_client_instance.notify.assert_called_once()
+    bugsnag_client_constructor.assert_called_once_with(api_key="secret")
+    bugsnag_delivery.deliver.assert_called_once()

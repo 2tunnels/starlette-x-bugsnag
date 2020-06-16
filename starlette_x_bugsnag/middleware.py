@@ -51,7 +51,7 @@ class BugsnagMiddleware(BaseHTTPMiddleware):
 
         tb = exception.__traceback__
 
-        if not tb:
+        if not tb:  # pragma: no cover
             return {}
 
         while tb.tb_next is not None:
