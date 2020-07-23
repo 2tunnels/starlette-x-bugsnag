@@ -2,7 +2,7 @@ test:
 	pytest -vv --cov=starlette_x_bugsnag --cov-report=term-missing --cov-report=xml
 
 isort:
-	isort --recursive .
+	isort .
 
 black:
 	black .
@@ -10,7 +10,7 @@ black:
 format: isort black
 
 lint-isort:
-	isort --recursive --check-only .
+	isort --check-only .
 
 lint-black:
 	black --check .
